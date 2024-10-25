@@ -1,0 +1,1 @@
+(Get-Item "C:\path\to\file.log").CreationTime=("09/10/2024 20:20:00")

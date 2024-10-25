@@ -1,0 +1,6 @@
+server_name = ""
+user = ""
+passwd = ""
+database_name = ""
+view_name_ryzyka = ""
+view_name_historia = ""
