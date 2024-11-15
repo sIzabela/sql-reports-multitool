@@ -139,7 +139,7 @@ def historia_pobieranie_dzisiaj():
         log_message(f">>> Plik {output_path} już istnieje.")
     else:
         SQL(view_name, output_path)
-        headers = ['gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
+        headers = ['gov_MARKA','gov_MODEL','gov_POJEMNOSC','gov_MOC','gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_MARKA','info_MODEL','info_POJEMNOSC','info_MOC','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
         startColumn = 19
         excel_naglowki(output_path, headers, startColumn)         
 
@@ -161,7 +161,7 @@ def historia_pobieranie_data():
     else:
         log_message(f">>> Pobieranie raportu z dnia {date}")
 
-        raport_date = (datetime.strptime(date, '%Y%m%d') - timedelta(days=1)).strftime('%Y%m%d')
+        raport_date = (datetime.strptime(date, '%Y%m%d') - timedelta(days=23)).strftime('%Y%m%d')
         today = datetime.now()
         delta = today - datetime.strptime(raport_date, '%Y%m%d')
 
@@ -178,7 +178,7 @@ def historia_pobieranie_data():
         
         pobieranie_eksportowanie_danych(query, engine, output_path)
 
-        headers = ['gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
+        headers = ['gov_MARKA','gov_MODEL','gov_POJEMNOSC','gov_MOC','gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_MARKA','info_MODEL','info_POJEMNOSC','info_MOC','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
         startColumn = 19
         excel_naglowki(output_path, headers, startColumn)
        
