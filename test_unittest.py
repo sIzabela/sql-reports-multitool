@@ -6,6 +6,7 @@ from io import StringIO
 from datetime import datetime, timedelta
 import random
 import time
+from pathlib import Path
 
 # Po przeniesieniu na maszynę - zmień ścieżki  w testach FALSE
 
@@ -131,13 +132,16 @@ class TestMain(unittest.TestCase):
                 self.assertIn('Log: > Wybrano opcję: Zakończ działanie', mock_stdout.getvalue())
 
         # Opóźnienie scalania
-        time.sleep(30)
+        time.sleep(15)
 
         # Ustawianie ścieżek z losowymi datami
         random_paths = []
         for date in self.random_dates:
-            random_paths.append(f'C://Users//izabe//OneDrive//Pulpit//daneABP//{date}//RaportDaneABP_{date}.xlsx')
-            # random_paths.append(f'C://Users//robot//Desktop//daneABP//{date}//RaportDaneABP_{date}.xlsx')
+            # random_paths.append(f'C:\\Users\\izabe\\OneDrive\\Pulpit\\daneABP\\{date}\\RaportDaneABP_{date}.xlsx')
+            random_paths.append(fr"C:\Users\izabe\OneDrive\Pulpit\daneABP\{date}\RaportDaneABP_{date}.xlsx")
+            # random_paths.append(f'C:\\Users\\robot\\Desktop\\daneABP\\{date}\\RaportDaneABP_{date}.xlsx')
+
+        print(random_paths)
 
         # Ustawienie środowiska testowego dla scalania raportów
         inputs = ['2', '3', '2', '4'] + random_paths + ['3']

@@ -140,7 +140,7 @@ def historia_pobieranie_dzisiaj():
     else:
         SQL(view_name, output_path)
         headers = ['gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
-        startColumn = 15
+        startColumn = 19
         excel_naglowki(output_path, headers, startColumn)         
 
 def historia_pobieranie_data():
@@ -179,7 +179,7 @@ def historia_pobieranie_data():
         pobieranie_eksportowanie_danych(query, engine, output_path)
 
         headers = ['gov_PROGNOZOWANY_PRZEBIEG','gov_POCHODZENIE_POJAZDU','gov_WYKORZYSTANIE_POJAZDU','gov_BADANIE_TECHNICZNE','gov_ZMIANY_WLASCICIELA','gov_WSPOLWLASCICIEL','info_PROGNOZOWANY_PRZEBIEG','info_POCHODZENIE_POJAZDU','info_WYKORZYSTANIE_POJAZDU','info_BADANIE_TECHNICZNE','info_ZMIANY_WLASCICIELA','info_WSPOLWLASCICIEL','PODSUMOWANIE','UWAGI','DATA_RAPORTU']
-        startColumn = 15
+        startColumn = 19
         excel_naglowki(output_path, headers, startColumn)
        
 def historia_scalanie():
@@ -231,7 +231,7 @@ def historia_scalanie():
         today_path = f"{today_folder}//{today_file}"
 
         log_message(">>> Wybrano opcję: Scalanie wskazanych raportów")
-        print("UWAGA! Jeśli nie scalasz dzisiejszego raportu, to zabezpiecz go przed nadpisaniem scalonymi danymi")
+        print("\nUWAGA! Jeśli nie scalasz dzisiejszego raportu, to zabezpiecz go przed nadpisaniem scalonymi danymi\n")
 
         today = datetime.now().strftime("%Y%m%d")
         today_folder = f"{base_path}//daneABP//{today}"
@@ -244,7 +244,7 @@ def historia_scalanie():
         pathList = []
         merge = None
         for i in range(int(fileCount)):
-            input_file = input(f"przeciągnij plik {i}: ")
+            input_file = os.path.normpath(input(f"przeciągnij plik {i}: "))
             log_message(f">>> Plik {i}: {input_file}")
             pathList.append(input_file)
             filesData = pd.read_excel(input_file)
